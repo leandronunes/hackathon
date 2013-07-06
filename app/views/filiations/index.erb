@@ -1,44 +1,49 @@
 <h1>Distribuição dos Partidos por Estado</h1>
 
-<div id="content">
+<div id="wrapper">
+  <div id="text">
+    Selecione o partido e saiba a distribuição deste no território nacional. A opção 'bubbles' dispõem os dados selecionados num formato de bolhas para facilitar a visualização.
+  </div>
+  <div id="content">
+  </div>
 </div>
 
-<div id="text">
-  A opção bubbles exibe bolhas com as informações para facilitar a visualização do mapa
-</div>
 
-  <script type="text/javascript">
-        var chart;
+<script type="text/javascript">
+  var chart;
 
-        var queryString = window.location.search.replace(/^\?/,'').split('&');
+  var queryString = window.location.search.replace(/^\?/,'').split('&');
   var queryParams = {};
   for (var i=0; i < queryString.length; i++) {
     var pair = queryString[i].split('=');
     queryParams[pair[0]] = pair[1];
-        }
+  }
 
-        window.onload = function() {
-          chart = new choroplethMap({
-            'container' : 'content',
-            'requestMethod' : 'get',
-
-                'size' : [600,600],
-                'position' : [130,50],
-                'background' : ['#b9a680','#f0e4ca'],
-                        'colors' : ['#FFEFD7','#FFE2B6','#FFC56E','#FFAA29','#C17500','#995D00'],
+  window.onload = function() {
+    chart = new choroplethMap({
+      'container' : 'content',
+      'requestMethod' : 'get',
+      'size' : [600,600],
+      'position' : [130,50],
+      'background' : ['#b9a680','#f0e4ca'],
+      'colors' : ['#FFEFD7','#FFE2B6','#FFC56E','#FFAA29','#C17500','#995D00'],
       'strokeWidth' : 2,
-                'strokeColor' : '#666',
+      'strokeColor' : '#666',
       'defaultRegionColor' : '#eeeeee',
-                        'strokeHoverColor' : '#000',
-                        'lang' : queryParams.lang || 'en',
-                        'map' : 'brazil',
-                'requestPath' : '/filiations/map',
-                  'initialState' : { 'regions' : 'PT', 'bubbles' : '' },
-                        'range' : 'log10',
-                        'showLegend' : true,
-                        'useDefaultInterface' : true,
-                  'showLabels' : true
+      'strokeHoverColor' : '#000',
+      'lang' : queryParams.lang || 'en',
+      'map' : 'brazil',
+      'requestPath' : '/filiations/map',
+      'initialState' : { 'regions' : 'PT', 'bubbles' : '' },
+      'range' : 'log10',
+      'showLegend' : true,
+      'useDefaultInterface' : true,
+      'showLabels' : true
     });
-        }
-        </script>
+  }
+</script>
 
+
+<div id="footer">
+   Download the code: git@heroku.com:murmuring-reef-4618.git
+</div>
